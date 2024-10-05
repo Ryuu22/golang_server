@@ -1,0 +1,21 @@
+{
+    "rest-client.environmentVariables": {
+        "$shared": {
+            "version": "v1",
+            "prodToken": "",
+            "nonProdToken": ""
+        },
+        "local": {
+            "version": "v1",
+            "host": "localhost",
+            "port": "8080",
+            "token": "{{$shared nonProdToken}}",
+            "secretKey": "devSecret"
+        },
+        "production": {
+            "host": "dankbueno.com",
+            "token": "{{$shared prodToken}}",
+            "secretKey": "prodSecret"
+        }
+    }
+}

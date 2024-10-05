@@ -1,0 +1,33 @@
+@username=user
+@email={{username}}@email.com
+@password=securepassword
+
+@enviroment=local
+
+
+# @name create
+POST http://{{host}}:{{port}}/api/v1/user
+Content-Type: application/json
+
+{
+    "username": "{{username}}",
+    "email": "{{email}}",
+    "password": "{{password}}"
+}
+
+###
+# @name login
+POST http://localhost:8080/api/v1/login
+Content-Type: application/json
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}
+###
+# @name verify
+// 3. Get the user
+GET http://localhost:8080/api/v1/user
+Authorization : Bearer {{login.response.body.token}}
+Content-Type: application/json
+
